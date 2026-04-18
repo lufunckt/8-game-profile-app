@@ -23,44 +23,52 @@ st.set_page_config(page_title="8-Game Profile Lab", page_icon="♠️", layout="
 # ─── GLOBAL CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap');
 
 /* ── BASE ── */
 html, body, [class*="css"] {
-    font-family: 'Exo 2', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
 }
 .stApp {
-    background: #060b18 !important;
+    background: #051118 !important;
     background-image:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,200,255,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(180,0,255,0.06) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(30,144,255,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(65,105,225,0.06) 0%, transparent 60%);
 }
 
 /* ── SIDEBAR ── */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0a1020 0%, #060b18 100%) !important;
-    border-right: 1px solid rgba(0,200,255,0.15) !important;
+    background: linear-gradient(180deg, #051118 0%, #040d16 100%) !important;
+    border-right: 1px solid rgba(30,144,255,0.25) !important;
+}
+
+/* Hide sidebar on mobile */
+@media (max-width: 768px) {
+    [data-testid="stSidebar"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
 }
 [data-testid="stSidebar"] .stRadio label {
-    color: #a0c8ff !important;
+    color: #e0e7ff !important;
     font-family: 'Rajdhani', sans-serif !important;
-    font-size: 1.05rem !important;
+    font-size: 1.15rem !important;
     font-weight: 600 !important;
     letter-spacing: 0.05em;
     padding: 6px 0;
 }
 [data-testid="stSidebar"] .stRadio [data-testid="stMarkdownContainer"] p {
-    color: #00d4ff !important;
+    color: #1e90ff !important;
 }
 
 /* ── HERO TITLE ── */
 .hero-title {
     font-family: 'Rajdhani', sans-serif !important;
-    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #00d4ff 0%, #bf00ff 50%, #ff6b35 100%);
+    background: linear-gradient(135deg, #1e90ff 0%, #00bfff 50%, #87ceeb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -69,8 +77,8 @@ html, body, [class*="css"] {
 }
 .hero-sub {
     font-family: 'Share Tech Mono', monospace;
-    color: rgba(0,212,255,0.6);
-    font-size: 0.75rem;
+    color: #87ceeb;
+    font-size: 0.85rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
@@ -78,8 +86,8 @@ html, body, [class*="css"] {
 
 /* ── STAT CARDS (metric boxes) ── */
 [data-testid="stMetric"] {
-    background: linear-gradient(135deg, rgba(0,212,255,0.07) 0%, rgba(30,20,60,0.8) 100%) !important;
-    border: 1px solid rgba(0,212,255,0.25) !important;
+    background: linear-gradient(135deg, rgba(30,144,255,0.12) 0%, rgba(13,27,61,0.95) 100%) !important;
+    border: 1px solid rgba(30,144,255,0.35) !important;
     border-radius: 14px !important;
     padding: 14px 16px !important;
     position: relative;
@@ -87,7 +95,7 @@ html, body, [class*="css"] {
     transition: border-color 0.3s, transform 0.2s;
 }
 [data-testid="stMetric"]:hover {
-    border-color: rgba(0,212,255,0.6) !important;
+    border-color: rgba(30,144,255,0.8) !important;
     transform: translateY(-2px);
 }
 [data-testid="stMetric"]::before {
@@ -95,19 +103,19 @@ html, body, [class*="css"] {
     position: absolute;
     top: 0; left: 0;
     width: 3px; height: 100%;
-    background: linear-gradient(180deg, #00d4ff, #bf00ff);
+    background: linear-gradient(180deg, #1e90ff, #00bfff);
     border-radius: 3px 0 0 3px;
 }
 [data-testid="stMetricLabel"] p {
     font-family: 'Share Tech Mono', monospace !important;
-    color: rgba(0,212,255,0.7) !important;
-    font-size: 0.68rem !important;
+    color: #b0c9ff !important;
+    font-size: 0.8rem !important;
     letter-spacing: 0.15em !important;
     text-transform: uppercase !important;
 }
 [data-testid="stMetricValue"] {
     font-family: 'Rajdhani', sans-serif !important;
-    font-size: 1.8rem !important;
+    font-size: 2.2rem !important;
     font-weight: 700 !important;
     color: #ffffff !important;
 }
@@ -115,12 +123,12 @@ html, body, [class*="css"] {
 /* ── SECTION HEADERS ── */
 .section-header {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #00d4ff;
-    border-bottom: 1px solid rgba(0,212,255,0.2);
+    color: #1e90ff;
+    border-bottom: 1px solid rgba(30,144,255,0.3);
     padding-bottom: 8px;
     margin: 1.5rem 0 1rem 0;
     display: flex;
@@ -131,15 +139,15 @@ html, body, [class*="css"] {
 /* ── OPPONENT CARD GRID ── */
 .opp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
     margin: 1rem 0;
 }
 .opp-card {
-    background: linear-gradient(135deg, rgba(15,25,50,0.95) 0%, rgba(10,15,35,0.9) 100%);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(135deg, rgba(13,27,61,0.95) 0%, rgba(10,20,50,0.9) 100%);
+    border: 1px solid rgba(30,144,255,0.2);
     border-radius: 14px;
-    padding: 14px 12px;
+    padding: 16px 14px;
     cursor: pointer;
     transition: all 0.25s ease;
     position: relative;
@@ -151,8 +159,8 @@ html, body, [class*="css"] {
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
 }
 .opp-card.selected {
-    border-color: rgba(0,212,255,0.7) !important;
-    box-shadow: 0 0 20px rgba(0,212,255,0.2), inset 0 0 20px rgba(0,212,255,0.04);
+    border-color: rgba(30,144,255,0.9) !important;
+    box-shadow: 0 0 20px rgba(30,144,255,0.3), inset 0 0 20px rgba(30,144,255,0.08);
 }
 .opp-card-accent {
     position: absolute;
@@ -161,27 +169,27 @@ html, body, [class*="css"] {
     border-radius: 14px 14px 0 0;
 }
 .opp-avatar {
-    width: 46px; height: 46px;
+    width: 52px; height: 52px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem;
-    margin: 6px auto 8px auto;
+    font-size: 1.5rem;
+    margin: 8px auto 10px auto;
     font-weight: 700;
-    border: 2px solid rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.25);
 }
 .opp-name {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-size: 0.82rem;
-    color: #e8f0ff;
-    margin-bottom: 4px;
+    font-size: 0.95rem;
+    color: #f0f4ff;
+    margin-bottom: 6px;
     word-break: break-all;
     line-height: 1.2;
 }
 .opp-stats-mini {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.65rem;
-    color: rgba(160,200,255,0.7);
+    font-size: 0.7rem;
+    color: #b0c9ff;
     line-height: 1.6;
 }
 .opp-badge {
@@ -195,14 +203,14 @@ html, body, [class*="css"] {
     letter-spacing: 0.08em;
     margin-top: 5px;
 }
-.badge-alta { background: rgba(0,255,160,0.15); color: #00ffa0; border: 1px solid rgba(0,255,160,0.3); }
-.badge-media { background: rgba(255,200,0,0.15); color: #ffc800; border: 1px solid rgba(255,200,0,0.3); }
-.badge-baixa { background: rgba(255,80,80,0.15); color: #ff5050; border: 1px solid rgba(255,80,80,0.3); }
+.badge-alta { background: rgba(0,255,160,0.25); color: #00ffa0; border: 1px solid rgba(0,255,160,0.5); }
+.badge-media { background: rgba(255,200,0,0.25); color: #ffc800; border: 1px solid rgba(255,200,0,0.5); }
+.badge-baixa { background: rgba(255,80,80,0.25); color: #ff5050; border: 1px solid rgba(255,80,80,0.5); }
 
 /* ── PLAYER DETAIL PANEL ── */
 .player-panel {
-    background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(10,15,40,0.95) 100%);
-    border: 1px solid rgba(0,212,255,0.2);
+    background: linear-gradient(135deg, rgba(30,144,255,0.08) 0%, rgba(13,27,61,0.95) 100%);
+    border: 1px solid rgba(30,144,255,0.3);
     border-radius: 18px;
     padding: 20px;
     margin-top: 12px;
@@ -219,7 +227,7 @@ html, body, [class*="css"] {
     display: flex; align-items: center; justify-content: center;
     font-size: 1.6rem;
     flex-shrink: 0;
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
 }
 .player-panel-name {
     font-family: 'Rajdhani', sans-serif;
@@ -230,7 +238,7 @@ html, body, [class*="css"] {
 }
 .player-panel-label {
     font-size: 0.8rem;
-    color: rgba(160,200,255,0.8);
+    color: #b0c9ff;
     margin-top: 2px;
 }
 
@@ -239,37 +247,37 @@ html, body, [class*="css"] {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(0,212,255,0.1);
-    border: 1px solid rgba(0,212,255,0.3);
+    background: rgba(30,144,255,0.15);
+    border: 1px solid rgba(30,144,255,0.4);
     border-radius: 20px;
     padding: 4px 12px;
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.72rem;
-    color: #00d4ff;
+    color: #1e90ff;
     margin: 3px;
     cursor: pointer;
     transition: all 0.2s;
 }
 .variant-pill:hover, .variant-pill.active {
-    background: rgba(0,212,255,0.25);
-    border-color: #00d4ff;
+    background: rgba(30,144,255,0.3);
+    border-color: #1e90ff;
 }
 
 /* ── STAT BAR ── */
 .stat-bar-wrap {
-    margin: 6px 0;
+    margin: 8px 0;
 }
 .stat-bar-label {
     display: flex;
     justify-content: space-between;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: rgba(160,200,255,0.8);
-    margin-bottom: 3px;
+    font-size: 0.8rem;
+    color: #b0c9ff;
+    margin-bottom: 4px;
 }
 .stat-bar-track {
-    height: 6px;
-    background: rgba(255,255,255,0.06);
+    height: 8px;
+    background: rgba(255,255,255,0.1);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -281,24 +289,24 @@ html, body, [class*="css"] {
 
 /* ── ANALYSIS OUTPUT ── */
 .analysis-box {
-    background: rgba(0,5,15,0.7);
-    border: 1px solid rgba(0,212,255,0.15);
-    border-left: 3px solid #00d4ff;
+    background: rgba(13,27,61,0.7);
+    border: 1px solid rgba(30,144,255,0.25);
+    border-left: 3px solid #1e90ff;
     border-radius: 10px;
     padding: 16px;
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
-    color: #c8deff;
+    color: #dce8ff;
     line-height: 1.75;
     white-space: pre-wrap;
 }
 
 /* ── BUTTONS ── */
 .stButton > button {
-    background: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(100,0,255,0.15) 100%) !important;
-    border: 1px solid rgba(0,212,255,0.4) !important;
+    background: linear-gradient(135deg, rgba(30,144,255,0.2) 0%, rgba(65,105,225,0.2) 100%) !important;
+    border: 1px solid rgba(30,144,255,0.5) !important;
     border-radius: 10px !important;
-    color: #00d4ff !important;
+    color: #e8f0ff !important;
     font-family: 'Rajdhani', sans-serif !important;
     font-size: 0.95rem !important;
     font-weight: 600 !important;
@@ -308,54 +316,54 @@ html, body, [class*="css"] {
     padding: 8px 16px !important;
 }
 .stButton > button:hover {
-    background: linear-gradient(135deg, rgba(0,212,255,0.3) 0%, rgba(150,0,255,0.3) 100%) !important;
-    border-color: #00d4ff !important;
-    box-shadow: 0 0 20px rgba(0,212,255,0.25) !important;
+    background: linear-gradient(135deg, rgba(30,144,255,0.4) 0%, rgba(65,105,225,0.4) 100%) !important;
+    border-color: #1e90ff !important;
+    box-shadow: 0 0 20px rgba(30,144,255,0.35) !important;
     transform: translateY(-1px);
 }
 
 /* ── SELECTBOX ── */
 [data-testid="stSelectbox"] > div > div {
-    background: rgba(10,20,45,0.95) !important;
-    border: 1px solid rgba(0,212,255,0.3) !important;
+    background: rgba(13,27,61,0.95) !important;
+    border: 1px solid rgba(30,144,255,0.4) !important;
     border-radius: 10px !important;
-    color: #c8deff !important;
-    font-family: 'Exo 2', sans-serif !important;
+    color: #dce8ff !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 /* ── TEXT INPUT ── */
 [data-testid="stTextInput"] input {
-    background: rgba(10,20,45,0.95) !important;
-    border: 1px solid rgba(0,212,255,0.3) !important;
+    background: rgba(13,27,61,0.95) !important;
+    border: 1px solid rgba(30,144,255,0.4) !important;
     border-radius: 10px !important;
     color: #c8deff !important;
     font-family: 'Share Tech Mono', monospace !important;
 }
 [data-testid="stTextInput"] input:focus {
-    border-color: #00d4ff !important;
-    box-shadow: 0 0 10px rgba(0,212,255,0.2) !important;
+    border-color: #1e90ff !important;
+    box-shadow: 0 0 10px rgba(30,144,255,0.3) !important;
 }
 
 /* ── DATAFRAME ── */
 [data-testid="stDataFrame"] {
-    border: 1px solid rgba(0,212,255,0.15) !important;
+    border: 1px solid rgba(30,144,255,0.25) !important;
     border-radius: 12px !important;
     overflow: hidden;
 }
 
 /* ── TEXT AREA ── */
 textarea {
-    background: rgba(5,10,25,0.95) !important;
-    border: 1px solid rgba(0,212,255,0.2) !important;
+    background: rgba(13,27,61,0.95) !important;
+    border: 1px solid rgba(30,144,255,0.3) !important;
     border-radius: 10px !important;
-    color: #a8c0e8 !important;
+    color: #d0deff !important;
     font-family: 'Share Tech Mono', monospace !important;
     font-size: 0.78rem !important;
 }
 
 /* ── DIVIDER ── */
 hr {
-    border-color: rgba(0,212,255,0.15) !important;
+    border-color: rgba(30,144,255,0.25) !important;
 }
 
 /* ── WARNING / INFO ── */
@@ -370,37 +378,37 @@ hr {
     background: linear-gradient(135deg, rgba(15,25,55,0.9) 0%, rgba(8,15,35,0.95) 100%);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
     transition: all 0.25s;
     position: relative;
     overflow: hidden;
 }
 .variant-card:hover {
-    border-color: rgba(0,212,255,0.35);
+    border-color: rgba(30,144,255,0.35);
     transform: translateX(4px);
 }
 .variant-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 }
 .variant-card-name {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: #e8f0ff;
     letter-spacing: 0.06em;
 }
 .variant-card-icon {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 .variant-profile-tag {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.65rem;
-    color: rgba(0,212,255,0.7);
-    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: rgba(30,144,255,0.8);
+    margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -443,11 +451,68 @@ hr {
     .opp-card { padding: 10px 8px !important; }
     .hero-title { font-size: 1.6rem !important; }
     [data-testid="stMetricValue"] { font-size: 1.4rem !important; }
+    
+    /* Adjust main content for mobile */
+    .block-container { padding: 0 8px !important; }
+    
+    /* Make variant cards stack better */
+    .variant-card { padding: 14px !important; margin-bottom: 12px !important; }
+    .variant-card-name { font-size: 1.1rem !important; }
+    
+    /* Adjust section headers */
+    .section-header { font-size: 1.1rem !important; margin: 1rem 0 0.8rem 0 !important; }
+    
+    /* Better metric cards on mobile */
+    [data-testid="stMetric"] { padding: 10px 12px !important; }
+    [data-testid="stMetricLabel"] p { font-size: 0.65rem !important; }
+    [data-testid="stMetricValue"] { font-size: 1.5rem !important; }
 }
 
 /* ── HIDE STREAMLIT CHROME ── */
 #MainMenu, footer, header { visibility: hidden; }
 .block-container { padding-top: 1.5rem !important; padding-bottom: 2rem !important; }
+
+/* ── COLUMNS RESPONSIVE ── */
+.st-emotion-cache-1lcbmhc {
+    width: 100% !important;
+}
+
+/* ── PADDING FIX FOR MOBILE ── */
+@media (max-width: 768px) {
+    .block-container { 
+        padding-left: 1rem !important; 
+        padding-right: 1rem !important;
+        padding-top: 0.5rem !important;
+    }
+    
+    /* Force single column layout on mobile where needed */
+    .st-emotion-cache-uf99v {
+        flex-direction: column !important;
+    }
+    
+    /* Better button sizing */
+    .stButton > button {
+        width: 100% !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Better input sizing */
+    .stTextInput, .stSelectbox, .stTextArea {
+        width: 100% !important;
+    }
+    
+    /* Columns should stack vertically on mobile */
+    [data-testid="column"] {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Make dataframes scrollable on mobile */
+    [data-testid="stDataFrame"] {
+        font-size: 0.75rem !important;
+        overflow-x: auto !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -467,17 +532,17 @@ VARIANT_COLORS = {
     "Hold'em Limit":               ("135deg, #00aaff, #0055ff"),
     "Hold'em No Limit":            ("135deg, #ff6b35, #ff0060"),
     "Omaha Hi/Lo Limit":           ("135deg, #00ffaa, #00aaff"),
-    "Omaha Pot Limit":             ("135deg, #bf00ff, #6600ff"),
+    "Omaha Pot Limit":             ("135deg, #1e90ff, #4169e1"),
     "7 Card Stud Hi/Lo Limit":     ("135deg, #ffcc00, #ff8800"),
     "7 Card Stud Limit":           ("135deg, #ff9500, #ff4500"),
-    "Razz Limit":                  ("135deg, #ff0080, #aa00ff"),
+    "Razz Limit":                  ("135deg, #1e90ff, #87ceeb"),
     "Triple Draw 2-7 Lowball Limit": ("135deg, #00ffdd, #00aa88"),
 }
 
 # Deterministic avatar palette: each nick gets a consistent color from a set
 AVATAR_PALETTES = [
-    ("rgba(0,212,255,0.25)", "#00d4ff", "🎯"),
-    ("rgba(191,0,255,0.25)", "#bf00ff", "🦁"),
+    ("rgba(30,144,255,0.25)", "#1e90ff", "🎯"),
+    ("rgba(65,105,225,0.25)", "#4169e1", "🦁"),
     ("rgba(255,107,53,0.25)", "#ff6b35", "🔥"),
     ("rgba(0,255,160,0.25)", "#00ffa0", "🐍"),
     ("rgba(255,200,0,0.25)",  "#ffc800", "⚡"),
@@ -507,7 +572,7 @@ def stat_bar(label, value, max_val=100, color="#00d4ff"):
     </div>"""
 
 def variant_gradient(v):
-    return VARIANT_COLORS.get(v, "135deg, #00d4ff, #bf00ff")
+    return VARIANT_COLORS.get(v, "135deg, #1e90ff, #4169e1")
 
 # ─── PROMPTS ────────────────────────────────────────────────────────────────────
 
@@ -684,11 +749,17 @@ def try_openai(prompt: str):
     except Exception as e:
         return None, f"Falha ao chamar a API: {e}"
 
+# ─── NAVIGATION INITIALIZATION ──────────────────────────────────────────────────
+
+if "current_page" not in st.session_state:
+    st.session_state.current_page = "Dashboard"
+
 # ─── SIDEBAR ────────────────────────────────────────────────────────────────────
 
+# Sidebar only appears on desktop
 with st.sidebar:
     st.markdown("""
-    <div style="text-align:center; padding: 12px 0 16px 0;">
+    <div style="text-align:center; padding: 12px 0 16px 0; margin-bottom: 16px;">
         <div style="font-family:'Rajdhani',sans-serif; font-size:1.5rem; font-weight:700;
                     background: linear-gradient(135deg, #00d4ff, #bf00ff);
                     -webkit-background-clip:text; -webkit-text-fill-color:transparent;
@@ -702,33 +773,116 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-    page = st.radio(
-        "Navegação",
-        ["🏠  Dashboard", "🎴  Modalidades", "👥  Oponentes", "⚔️  Comparação"],
-        index=0,
-        label_visibility="collapsed"
-    )
-    page = page.split("  ", 1)[1]  # strip icon prefix
-
     st.divider()
     st.markdown('<div style="font-family:Rajdhani,sans-serif; font-size:0.85rem; font-weight:700; color:rgba(0,212,255,0.8); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">⚙ IA (OpenAI)</div>', unsafe_allow_html=True)
     st.text_input("OpenAI API Key", key="openai_api_key", type="password", label_visibility="collapsed", placeholder="sk-...")
-    st.caption("Sem chave, o app usa a leitura local heurística. Menos mágica, mais confiável.")
 
-# ─── GLOBAL HEADER ──────────────────────────────────────────────────────────────
+# ─── MOBILE RESPONSIVE MENU ─────────────────────────────────────────────────────
 
-st.markdown(f"""
-<div class="hero-title">8-Game Poker Analysis Lab</div>
-<div class="hero-sub">♠ ♥ ♦ ♣ &nbsp;·&nbsp; Hero: {hero.upper()} &nbsp;·&nbsp; Session Active</div>
+st.markdown("""
+<style>
+/* ── MOBILE NAVIGATION BAR ── */
+.mobile-nav-bar {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, #0a1020 0%, #060b18 100%);
+    border-bottom: 2px solid rgba(0,212,255,0.35);
+    padding: 8px 6px;
+    z-index: 9999;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.mobile-nav-btn {
+    background: rgba(0,212,255,0.1) !important;
+    border: 1px solid rgba(0,212,255,0.3) !important;
+    border-radius: 8px !important;
+    color: #a0c8ff !important;
+    padding: 10px 6px !important;
+    font-size: 0.7rem !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.25s !important;
+    white-space: nowrap !important;
+    min-width: auto !important;
+    flex: 1 1 22% !important;
+    text-align: center !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+}
+
+.mobile-nav-btn:hover {
+    background: rgba(0,212,255,0.2) !important;
+    border-color: rgba(0,212,255,0.6) !important;
+    color: #00d4ff !important;
+}
+
+.mobile-nav-btn:active,
+.mobile-nav-btn.active {
+    background: linear-gradient(135deg, rgba(0,212,255,0.4), rgba(30,144,255,0.3)) !important;
+    border-color: rgba(0,212,255,0.8) !important;
+    color: #00ffff !important;
+    box-shadow: 0 0 15px rgba(0,212,255,0.4) !important;
+}
+
+/* ── DESKTOP: hide this nav ── */
+@media (min-width: 769px) {
+    .mobile-nav-bar {
+        display: none;
+    }
+}
+
+/* ── MOBILE: adjust columns ── */
+@media (max-width: 768px) {
+    .stColumn { max-width: 100% !important; }
+    
+    /* Hide sidebar navigation section on mobile */
+    [data-testid="stSidebar"] {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+    }
+}
+</style>
 """, unsafe_allow_html=True)
 
-c1, c2, c3, c4 = st.columns(4)
-c1.metric("🃏  Mãos únicas",   summary_data["unique_hands"])
-c2.metric("📂  Arquivos",       summary_data["files_used"])
-c3.metric("👥  Oponentes",      summary_data["unique_opponents"])
-c4.metric("🎴  Modalidades",    len(hero_profiles))
+# ─── GLOBAL HEADER + MOBILE NAV ──────────────────────────────────────────────────
 
-st.markdown("<hr style='margin:1.2rem 0 1.5rem 0;'>", unsafe_allow_html=True)
+# Get current page from session state
+page = st.session_state.current_page
+
+# Mobile navigation buttons at the top (alternative to sidebar)
+pages_nav = ["Dashboard", "Modalidades", "Oponentes", "Comparação"]
+icons_nav = ["🏠", "🎴", "👥", "⚔️"]
+
+col_nav = st.columns(4)
+for idx, (page_name, icon) in enumerate(zip(pages_nav, icons_nav)):
+    with col_nav[idx]:
+        # Create button with active state styling
+        is_active = page_name == page
+        btn_class = "mobile-nav-btn active" if is_active else "mobile-nav-btn"
+        btn_style = "opacity: 1;" if is_active else ""
+        
+        if st.button(f"{icon} {page_name}", key=f"mobile_nav_{page_name}", 
+                     help=f"Ir para {page_name}", use_container_width=True):
+            st.session_state.current_page = page_name
+            st.rerun()
+
+st.markdown("<hr style='margin:0.8rem 0 1.2rem 0; border-color: rgba(30,144,255,0.2);'>", unsafe_allow_html=True)
+
+# Dashboard metrics
+c1, c2, c3, c4 = st.columns(4, gap="large")
+c1.metric("🃏 Mãos", summary_data["unique_hands"])
+c2.metric("📂 Arquivos", summary_data["files_used"])
+c3.metric("👥 Oponentes", summary_data["unique_opponents"])
+c4.metric("🎴 Modalidades", len(hero_profiles))
+
+st.markdown("<hr style='margin:1.5rem 0 2rem 0;'>", unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE: DASHBOARD
@@ -738,31 +892,32 @@ if page == "Dashboard":
     st.markdown('<div class="section-header">📊 Visão geral — ' + hero + '</div>', unsafe_allow_html=True)
 
     # Variant cards grid
-    cols = st.columns(2)
+    cols = st.columns(1)  # Full width cards for better readability
     for i, v in enumerate(hero_profiles):
         grad = variant_gradient(v["variant"])
         icon = VARIANT_ICONS.get(v["variant"], "🎴")
-        with cols[i % 2]:
-            st.markdown(f"""
-            <div class="variant-card">
-                <div class="variant-card-top">
-                    <div class="variant-card-name">{icon} {v['variant']}</div>
-                    <div style="font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:rgba(255,255,255,0.4);">{v['hands']}m / {v['tournaments']}t</div>
-                </div>
-                <div class="variant-profile-tag">{v['profile']}</div>
-                {stat_bar('VPIP', v['vpip_pct'], color='#00d4ff')}
-                {stat_bar('1ª Agressão', v['first_aggr_pct'], color='#bf00ff')}
-                {stat_bar('Win %', v['win_pct'], color='#00ffa0')}
-                {stat_bar('Fold %', v['fold_pct'], color='#ff6b35')}
+        st.markdown(f"""
+        <div class="variant-card">
+            <div class="variant-card-top">
+                <div class="variant-card-name">{icon} {v['variant']}</div>
+                <div style="font-family:'Share Tech Mono',monospace; font-size:0.8rem; color:rgba(255,255,255,0.5);">{v['hands']}m / {v['tournaments']}t</div>
             </div>
-            """, unsafe_allow_html=True)
+            <div class="variant-profile-tag">{v['profile']}</div>
+            {stat_bar('VPIP', v['vpip_pct'], color='#1e90ff')}
+            {stat_bar('1ª Agressão', v['first_aggr_pct'], color='#4169e1')}
+            {stat_bar('Win %', v['win_pct'], color='#00ffa0')}
+            {stat_bar('Fold %', v['fold_pct'], color='#ff6b35')}
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("")  # Add spacing between cards
 
     st.markdown('<div class="section-header">🏆 Top oponentes por volume</div>', unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom: 1.5rem;'></div>", unsafe_allow_html=True)
 
     opp_df = pd.DataFrame(opponent_profiles).sort_values(["hands","tournaments"], ascending=False).head(25)
     st.dataframe(
         opp_df[["name","hands","tournaments","variants_seen","top_variant","vpip_pct","first_aggr_pct","showdown_pct","showdown_win_pct","confidence"]],
-        use_container_width=True, hide_index=True
+        width='stretch', hide_index=True
     )
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -789,6 +944,7 @@ elif page == "Modalidades":
     grad = variant_gradient(v["variant"])
     icon = VARIANT_ICONS.get(v["variant"], "🎴")
 
+    # Responsive layout: 2 columns on desktop, 1 column on mobile
     left, right = st.columns([1.1, 1])
 
     with left:
@@ -836,12 +992,13 @@ elif page == "Modalidades":
         st.bar_chart(metrics_df.set_index("Métrica"))
 
     with right:
-        st.markdown('<div style="font-family:Rajdhani,sans-serif;font-size:0.85rem;font-weight:700;color:rgba(0,212,255,0.8);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Prompt para IA</div>', unsafe_allow_html=True)
-        prompt = st.text_area("Prompt para IA", value=variant_prompt(v), height=260, key=f"var_{selected}", label_visibility="collapsed")
+        st.markdown('<div style="font-family:Rajdhani,sans-serif;font-size:0.9rem;font-weight:700;color:#1e90ff;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Prompt para IA</div>', unsafe_allow_html=True)
+        prompt = st.text_area("Prompt para IA", value=variant_prompt(v), height=280, key=f"var_{selected}", label_visibility="collapsed")
+        st.markdown("<div style='margin-top:12px;'></div>", unsafe_allow_html=True)
         a, b = st.columns(2)
-        if a.button("📊 Análise local", use_container_width=True):
+        if a.button("📊 Análise local", width='stretch'):
             st.session_state["variant_analysis"] = local_analysis_variant(v)
-        if b.button("🤖 Analisar com IA", use_container_width=True):
+        if b.button("🤖 Analisar com IA", width='stretch'):
             txt, err = try_openai(prompt)
             st.session_state["variant_analysis"] = txt or err
 
@@ -875,24 +1032,46 @@ elif page == "Oponentes":
     if not filtered:
         st.warning("Nenhum oponente encontrado.")
     else:
+        # ── Pagination setup ──
+        CARDS_PER_PAGE = 20
+        total_opponents = len(filtered)
+        total_pages = (total_opponents + CARDS_PER_PAGE - 1) // CARDS_PER_PAGE
+        
+        if "opp_page" not in st.session_state:
+            st.session_state.opp_page = 0
+        
+        # Pagination controls
+        col_page = st.columns([1, 3, 1])
+        with col_page[0]:
+            if st.button("← Anterior", width='stretch', disabled=(st.session_state.opp_page == 0)):
+                st.session_state.opp_page -= 1
+                st.rerun()
+        with col_page[1]:
+            st.markdown(f"<div style='text-align:center; padding:8px; color:#b0c9ff; font-family:Rajdhani; font-weight:700;'>Página {st.session_state.opp_page + 1} de {total_pages} ({total_opponents} oponentes)</div>", unsafe_allow_html=True)
+        with col_page[2]:
+            if st.button("Próxima →", width='stretch', disabled=(st.session_state.opp_page >= total_pages - 1)):
+                st.session_state.opp_page += 1
+                st.rerun()
+        
+        # Get page data
+        start_idx = st.session_state.opp_page * CARDS_PER_PAGE
+        end_idx = min(start_idx + CARDS_PER_PAGE, total_opponents)
+        page_opponents = filtered[start_idx:end_idx]
+        
         # ── Card grid ──
-        selected_opp = st.session_state.get("selected_opp", filtered[0]["name"])
-        # Make sure selected is still in filtered
-        if not any(o["name"] == selected_opp for o in filtered):
-            selected_opp = filtered[0]["name"]
-
+        selected_opp = st.session_state.get("selected_opp", page_opponents[0]["name"] if page_opponents else None)
+        
         # Build card grid HTML
         cards_html = '<div class="opp-grid">'
-        for o in filtered:
+        for o in page_opponents:
             bg_col, accent_col, emoji = get_avatar(o["name"])
             badge = conf_badge(o["confidence"])
             is_sel = "selected" if o["name"] == selected_opp else ""
-            initials = o["name"][:2].upper()
             cards_html += f"""
-            <div class="opp-card {is_sel}" onclick="
-                window.parent.document.querySelectorAll('.opp-card').forEach(c=>c.classList.remove('selected'));
-                this.classList.add('selected');
-            " style="border-color: {'rgba(0,212,255,0.6)' if is_sel else 'rgba(255,255,255,0.08)'}">
+            <div class="opp-card {is_sel}" style="border-color: {'rgba(30,144,255,0.7)' if is_sel else 'rgba(30,144,255,0.2)'}; cursor:pointer;" onclick="
+                var evt = new CustomEvent('opp_selected', {{detail: '{o['name']}'}});
+                document.dispatchEvent(evt);
+            ">
                 <div class="opp-card-accent" style="background:linear-gradient({variant_gradient(o['top_variant'])})"></div>
                 <div class="opp-avatar" style="background:{bg_col}; color:{accent_col};">{emoji}</div>
                 <div class="opp-name">{o['name']}</div>
@@ -908,12 +1087,12 @@ elif page == "Oponentes":
         # Selectbox as the real state controller (hidden visually with the cards above)
         name = st.selectbox(
             "Escolha o oponente",
-            [o["name"] for o in filtered],
-            index=next((i for i, o in enumerate(filtered) if o["name"] == selected_opp), 0),
+            [o["name"] for o in page_opponents],
+            index=next((i for i, o in enumerate(page_opponents) if o["name"] == selected_opp), 0) if selected_opp else 0,
             key="opp_selectbox"
         )
         st.session_state["selected_opp"] = name
-        o = next(x for x in filtered if x["name"] == name)
+        o = next(x for x in page_opponents if x["name"] == name)
 
         # ── Detail panel ──
         bg_col, accent_col, emoji = get_avatar(o["name"])
@@ -926,7 +1105,7 @@ elif page == "Oponentes":
                     <div class="player-panel-label">{o['label']}</div>
                     <div style="margin-top:4px;">{conf_badge(o['confidence'])}
                         <span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;
-                            color:rgba(160,200,255,0.6);margin-left:8px;">
+                            color:#b0c9ff;margin-left:8px;">
                             {o['variants_seen']}/8 vars · {o['hands']} mãos · {o['tournaments']} torneios
                         </span>
                     </div>
@@ -945,10 +1124,10 @@ elif page == "Oponentes":
             m4.metric("SD Win",       f"{o['showdown_win_pct']}%")
 
             st.markdown(f"""
-            <div style="background:rgba(0,5,20,0.6);border:1px solid rgba(0,212,255,0.12);
+            <div style="background:rgba(13,27,61,0.8);border:1px solid rgba(30,144,255,0.2);
                         border-radius:12px;padding:14px;margin:10px 0;">
-                {stat_bar('VPIP', o['vpip_pct'], color='#00d4ff')}
-                {stat_bar('1ª Agressão', o['first_aggr_pct'], color='#bf00ff')}
+                {stat_bar('VPIP', o['vpip_pct'], color='#1e90ff')}
+                {stat_bar('1ª Agressão', o['first_aggr_pct'], color='#4169e1')}
                 {stat_bar('Agg Rate', o['agg_rate_pct'], color='#ff6b35')}
                 {stat_bar('Showdown', o['showdown_pct'], color='#ffc800')}
                 {stat_bar('Showdown Win', o['showdown_win_pct'], color='#00ffa0')}
@@ -972,15 +1151,15 @@ elif page == "Oponentes":
 
             st.markdown('<div class="section-header" style="font-size:0.9rem;">Mix por Modalidade</div>', unsafe_allow_html=True)
             mix_df = pd.DataFrame([{"Modalidade": k, "Mãos": v} for k, v in o["variant_mix"].items()])
-            st.dataframe(mix_df, use_container_width=True, hide_index=True)
+            st.dataframe(mix_df, width='stretch', hide_index=True)
 
         with right:
-            st.markdown('<div style="font-family:Rajdhani,sans-serif;font-size:0.85rem;font-weight:700;color:rgba(0,212,255,0.8);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Prompt para IA</div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-family:Rajdhani,sans-serif;font-size:0.85rem;font-weight:700;color:#1e90ff;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Prompt para IA</div>', unsafe_allow_html=True)
             prompt = st.text_area("Prompt para IA", value=opponent_prompt(o), height=300, key=f"opp_{name}", label_visibility="collapsed")
             a, b = st.columns(2)
-            if a.button("📊 Análise local", use_container_width=True, key="opp_local"):
+            if a.button("📊 Análise local", width='stretch', key="opp_local"):
                 st.session_state["opp_analysis"] = local_analysis_opponent(o)
-            if b.button("🤖 Analisar com IA", use_container_width=True, key="opp_ai"):
+            if b.button("🤖 Analisar com IA", width='stretch', key="opp_ai"):
                 txt, err = try_openai(prompt)
                 st.session_state["opp_analysis"] = txt or err
 
@@ -1020,35 +1199,68 @@ elif page == "Comparação":
         hero_bg, hero_accent, hero_emoji = get_avatar(hero)
         opp_bg, opp_accent, opp_emoji = get_avatar(name)
 
+        # Calculate "score" for gamification
+        hero_wins = 0
+        opp_wins = 0
+        metrics_to_compare = [
+            ("vpip_pct", "VPIP", True),  # True = lower is better for first metric
+            ("first_aggr_pct", "1ª Agressão", False),
+            ("agg_rate_pct", "Agg Rate", False),
+            ("showdown_win_pct", "Showdown Win", False),
+            ("win_pct", "Win %", False),
+        ]
+        
+        for metric, label, lower_is_better in metrics_to_compare:
+            h_val = h.get(metric, 0)
+            o_val = o.get(metric, 0)
+            if lower_is_better:
+                if h_val < o_val: hero_wins += 1
+                elif o_val < h_val: opp_wins += 1
+            else:
+                if h_val > o_val: hero_wins += 1
+                elif o_val > h_val: opp_wins += 1
+
         st.markdown(f"""
         <div class="duel-header">
             <div style="text-align:center;">
-                <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#0055ff);
-                            display:flex;align-items:center;justify-content:center;font-size:1.4rem;
-                            margin:0 auto 6px auto;border:2px solid rgba(0,212,255,0.5);">♠</div>
-                <div class="duel-name" style="color:#00d4ff;">{hero.upper()}</div>
-                <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:rgba(0,212,255,0.6);">HERO</div>
+                <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#1e90ff,#4169e1);
+                            display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+                            margin:0 auto 8px auto;border:3px solid rgba(30,144,255,0.7);box-shadow:0 0 30px rgba(30,144,255,0.3);">♠</div>
+                <div class="duel-name" style="color:#1e90ff; font-size:1.4rem;">{hero.upper()}</div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:rgba(30,144,255,0.7); margin-top:4px;">CAMPEÃO</div>
+                <div style="font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:900;color:#1e90ff;margin-top:8px;">{hero_wins}</div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:rgba(30,144,255,0.6);">ROUNDS VENCIDOS</div>
             </div>
-            <div class="duel-vs">VS</div>
+            <div class="duel-vs" style="font-size:1.8rem;margin:0 16px;">⚡</div>
             <div style="text-align:center;">
-                <div style="width:52px;height:52px;border-radius:50%;background:{opp_bg};
-                            display:flex;align-items:center;justify-content:center;font-size:1.4rem;
-                            margin:0 auto 6px auto;border:2px solid {opp_accent}88;">{opp_emoji}</div>
-                <div class="duel-name" style="color:{opp_accent};">{name}</div>
-                <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:rgba(160,200,255,0.5);">VILÃO</div>
+                <div style="width:60px;height:60px;border-radius:50%;background:{opp_bg};
+                            display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+                            margin:0 auto 8px auto;border:3px solid {opp_accent};box-shadow:0 0 30px {opp_accent}44;">{opp_emoji}</div>
+                <div class="duel-name" style="color:{opp_accent}; font-size:1.4rem;">{name.upper()}</div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:{opp_accent}88; margin-top:4px;">DESAFIANTE</div>
+                <div style="font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:900;color:{opp_accent};margin-top:8px;">{opp_wins}</div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:{opp_accent}99;">ROUNDS VENCIDOS</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
+        # Gamification: Show who's winning
+        if hero_wins > opp_wins:
+            st.success(f"🏆 {hero.upper()} está em vantagem! {hero_wins} - {opp_wins}", icon="🎯")
+        elif opp_wins > hero_wins:
+            st.warning(f"⚠️ {name.upper()} está em vantagem! {opp_wins} - {hero_wins}", icon="⚡")
+        else:
+            st.info(f"⚗️ Empate técnico! {hero_wins} - {opp_wins}", icon="⚖️")
+
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown(f'<div class="section-header" style="font-size:1rem;color:#00d4ff;">♠ {hero}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="section-header" style="font-size:1.1rem;color:#1e90ff;">♠ {hero}</div>', unsafe_allow_html=True)
             st.markdown(f"""
-            <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);
-                        border-radius:12px;padding:14px;">
-                {stat_bar('VPIP', h['vpip_pct'], color='#00d4ff')}
-                {stat_bar('1ª Agressão', h['first_aggr_pct'], color='#bf00ff')}
+            <div style="background:rgba(30,144,255,0.06);border:2px solid rgba(30,144,255,0.25);
+                        border-radius:12px;padding:16px;">
+                {stat_bar('VPIP', h['vpip_pct'], color='#1e90ff')}
+                {stat_bar('1ª Agressão', h['first_aggr_pct'], color='#4169e1')}
                 {stat_bar('Agg Rate', h['agg_rate_pct'], color='#ff6b35')}
                 {stat_bar('Showdown', h['showdown_pct'], color='#ffc800')}
                 {stat_bar('Showdown Win', h['showdown_win_pct'], color='#00ffa0')}
@@ -1066,13 +1278,13 @@ elif page == "Comparação":
                 ["Showdown win",f'{h["showdown_win_pct"]}%'],
                 ["Win total",   f'{h["win_pct"]}%'],
                 ["Fold",        f'{h["fold_pct"]}%'],
-            ], columns=["Métrica","Valor"]), use_container_width=True, hide_index=True)
+            ], columns=["Métrica","Valor"]), width='stretch', hide_index=True)
 
         with col2:
-            st.markdown(f'<div class="section-header" style="font-size:1rem;color:{opp_accent};">{opp_emoji} {name}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="section-header" style="font-size:1.1rem;color:{opp_accent};">{opp_emoji} {name}</div>', unsafe_allow_html=True)
             st.markdown(f"""
-            <div style="background:{opp_bg.replace('0.25','0.04')};border:1px solid {opp_accent}33;
-                        border-radius:12px;padding:14px;">
+            <div style="background:{opp_bg.replace('0.25','0.06')};border:2px solid {opp_accent}44;
+                        border-radius:12px;padding:16px;">
                 {stat_bar('VPIP', o['vpip_pct'], color=opp_accent)}
                 {stat_bar('1ª Agressão', o['first_aggr_pct'], color=opp_accent)}
                 {stat_bar('Agg Rate', o['agg_rate_pct'], color=opp_accent)}
@@ -1092,15 +1304,15 @@ elif page == "Comparação":
                 ["Showdown win",f'{o["showdown_win_pct"]}%'],
                 ["Win total",   f'{o["win_pct"]}%'],
                 ["Fold",        f'{o["fold_pct"]}%'],
-            ], columns=["Métrica","Valor"]), use_container_width=True, hide_index=True)
+            ], columns=["Métrica","Valor"]), width='stretch', hide_index=True)
 
         st.markdown('<div class="section-header">📊 Comparação por modalidade compartilhada</div>', unsafe_allow_html=True)
         if c["variant_comparison"]:
-            st.dataframe(pd.DataFrame(c["variant_comparison"]), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(c["variant_comparison"]), width='stretch', hide_index=True)
         else:
             st.info("Sem comparação por modalidade disponível.")
 
-        st.markdown('<div style="font-family:Rajdhani,sans-serif;font-size:0.85rem;font-weight:700;color:rgba(0,212,255,0.8);letter-spacing:0.1em;text-transform:uppercase;margin:12px 0 6px 0;">Prompt para IA</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-family:Rajdhani,sans-serif;font-size:0.85rem;font-weight:700;color:#1e90ff;letter-spacing:0.1em;text-transform:uppercase;margin:12px 0 6px 0;">Prompt para IA</div>', unsafe_allow_html=True)
         prompt = st.text_area("Prompt para IA", value=compare_prompt(c), height=260, key=f"cmp_{name}", label_visibility="collapsed")
         a, b = st.columns(2)
         if a.button("📊 Análise local", use_container_width=True, key="cmp_local"):
